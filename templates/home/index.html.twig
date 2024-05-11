@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<ul>
+  {%- for loc in app.enabled_locales -%}
+  {%- if loc != app.request.locale -%}
+  <li>
+    <a href="{{ path(app.current_route, app.current_route_parameters|merge({'_locale': loc })) }}">
+      {{ loc }}
+    </a>
+  </li>
+  {%- endif -%}
+  {%- endfor -%}
+</ul>
+{% endblock %}
